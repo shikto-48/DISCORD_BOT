@@ -30,7 +30,7 @@ let bot_token = "ODg0ODYzMzU1ODg0NTM5OTM0.YTerOA.zO" + "" + "BW7TSSveazghhkjliNo
 function DISCORD_SEND(messsage, channelID_) {
     let url = "https://cors-anywhere.herokuapp.com/" + "https://discordapp.com/api/channels/" + channelID_ + "/messages"
     
-    LOG("DISCORD-- sending a message: " + messsage)
+    //LOG("DISCORD-- sending a message: " + messsage)
     messsage = messsage || ""
     const request = new XMLHttpRequest();
     request.open("POST", url);
