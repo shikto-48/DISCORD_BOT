@@ -1,10 +1,11 @@
-const Discord = require("discord.js")
+import Discord from 'discord.js';
 let client;
 let token = process.env.TOKEN || "ODkxOTQ5MjgzNTA1NDkxOTY4.YVFygA.6A" + "2JDZZprzabr2B3oVVG3iPwY78";
 let channel_id = process.env.CHANNEL || 891933059673366538;
 let restart_client;
 
-let commands = require("./commands.js").COMMANDS
+//let commands = require("./commands.js").COMMANDS
+import {COMMANDS} from './commands.js';
 
 RESTART_BOT(null)
 
@@ -24,16 +25,16 @@ function RESTART_BOT(res) {
 
     console.log(args)
     //if(msg.channel.id != channel_id) return
-    if(commands[command] != null && commands[command] != ""){
-      if(typeof commands[command] == "function"){
+    if(COMMANDS[command] != null && COMMANDS[command] != ""){
+      if(typeof COMMANDS[command] == "function"){
         console.log("ARGS: " + args.shift())
-        let result = commands[command](msg, args)
+        let result = COMMANDS[command](msg, args)
         console.log("RESULT: " + result)
         if(result != null && result != ""){
           msg.reply(result)
         }
       }else{
-        msg.reply(commands[command]);
+        msg.reply(COMMANDS[command]);
       }      
     }
   })
@@ -41,7 +42,7 @@ function RESTART_BOT(res) {
   client.login(token)
 }
 
-const express = require('express')
+import express from 'express'
 const app = express()
 const port = process.env.PORT || 8080
 
